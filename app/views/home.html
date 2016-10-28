@@ -1,0 +1,70 @@
+
+
+<div class="container" ng-controller="HomeController">
+	<div class="col-md-2 col-md-6">
+		<img src="Content/images/add.jpg" class="img-responsive" alt="Responsive image">
+		<img src="Content/images/add4.png" class="img-responsive" alt="Responsive image">
+	</div>
+	<div class="col-md-8 col-md-12">
+		<section class="wow fadeInDown animated ">
+			<h2 class="brand-before wow fadeInDown animated">
+				<small>Welcome to Kleos, </small>
+			</h2><hr>
+			<p>The website that cares first and foremost on what the customer thinks. Using Kelos, you will have the ability to: </p>
+			<form>
+				<div class="rbuttondiv row">
+					<div class="col-md-8">
+						<div>
+							<h5><input type="radio" ng-model="category.selection" value="mkcomment"> Make a Comment</input>			</h5>
+							<p>Using this function you will have the ability to make comments about a professional that has represented you. Once this category is selected, you must also select a category to the right </p>
+						</div>
+						<div>
+							<h5><input type="radio" ng-model="category.selection"  value="search"> Search(see what others are saying)</input></h5>
+							<p>Using this function, you will have the ability to search by professional category, region, overall customer rating, and specific customer rating by category. Once you select "search", you must also select a category to the right.</p>
+						</div>	
+					</div>
+					<div class="col-md-4">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h3 class="panel-title">Categories</h3>
+							</div>
+							<div class="panel-body">
+								<input type="radio" ng-model="category.type"  value="Lawyers"> Lawyers</input>	<br>
+								<input type="radio" ng-model="category.type"  value="Medical Doctors"> Medical Doctors</input>	<br>
+								<input type="radio" ng-model="category.type"  value="Professors"> Professors</input>	<br>
+								<input type="radio" ng-model="category.type"  value="Teachers"> Teachers</input>	<br>
+								<input type="radio" ng-model="category.type"  value="CPA/Tax Professionals "> CPA/Tax Professionals </input>	<br>
+								<input type="radio" ng-model="category.type"  value="Renters"> Renters</input>	<br>
+								<input type="radio" ng-model="category.type"  value="Real Estate Agents"> Real Estate Agents</input>	<br>
+								<input type="radio" ng-model="category.type"  value="Other"> Other</input>	<br>
+							</div>
+						</div>		
+					</div>
+					<button class="btn btn-sm btn-primary" type="submit" ng-click="go(category)" >Go</button>
+				</div>
+				</<form>
+			</section>
+
+	<!-- <section>
+		<h2 class="brand-before">
+			<small>News </small>
+		</h2><hr>
+	</section> -->
+	
+	<section class="socialnetwork" style="display:none;">
+		<ul>
+			<li style="margin:5px;"><a href="https://twitter.com/" target="new" title="twitter"><i class="fa fa-twitter on fa-square-o fa-lg"></i></a></li><br>
+			<li style="margin:5px;"><a href="https://plus.google.com/" target="new" title="google plus"><i class="fa fa-google-plus on fa-square-o fa-lg"></i></a></li><br>
+			<li style="margin:5px;"><a href="https://www.linkedin.com/company/" target="new" title="linkedin"><i class="fa fa-linkedin on fa-square-o fa-lg"></i></a></li><br>
+			<li style="margin:5px;"><a href="https://www.facebook.com/pages/" target="new" title="facebook"><i class="fa fa-facebook on fa-square-o fa-lg"></i></a></li>
+		</ul>
+	</section>
+	
+</div>
+<div class="col-md-2 col-md-6" style="padding:10px;">
+	<img src="Content/images/add2.jpg" class="img-responsive" alt="Responsive image">
+	<img src="Content/images/add3.jpg" class="img-responsive" alt="Responsive image">
+</div>
+</div>
+
+

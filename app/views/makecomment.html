@@ -1,0 +1,132 @@
+
+<!-- <link rel="stylesheet"  href="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+<div class="container makecommentdiv" ng-controller="MakeCommentController">
+	<div class="col-md-2 col-md-6">
+	</div>
+	<div class="col-md-8 col-md-12">
+		<section class"makecommentdivsec"> 
+			<h4 class="brand-before wow fadeInDown animated">Please rate the selected category :- <span>{{cattype.type}}</span><br><br>
+				<small>Please rate the selected categories. '5' is the best rating, '1' is the worst. You will have opportunity to rate your experience overall at the bottom of the page or on a specific category. </small>
+			</h4><hr>
+			
+			<ul class="list-unstyled">
+				<li>
+					<div class="row">
+						<div class="col-sm-5">							
+							<h4 class="ng-binding"><img src="Content/images/blue-arrow-right.png"> Friendliness</h4>
+    						<div class="star"><input id="input-21d" value="5" type="number" class="str" min=0 max=5 step=0.5 data-size="xs"></div>
+						</div>
+						<div class="col-sm-6">
+							<textarea class="form-control" rows="2" placeholder="If you have additional comments about this category enter here."></textarea>	
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="row">
+						<div class="col-sm-5">							
+							<h4 class="ng-binding"><img src="Content/images/blue-arrow-right.png"> Approachability</h4>
+    						<div class="star"><input id="input-21d" value="2" type="number" class="str" min=0 max=5 step=0.5 data-size="xs" data-default-caption="{rating}"></div>
+						</div>
+						<div class="col-sm-6">
+							<textarea class="form-control" rows="2" placeholder="If you have additional comments about this category enter here."></textarea>	
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="row">
+						<div class="col-sm-5">							
+							<h4 class="ng-binding"><img src="Content/images/blue-arrow-right.png"> Subject Matter Expertise</h4>
+    						<div class="star"><input id="input-21d" value="1" type="number" class="str" min=0 max=5 step=1 data-size="xs"></div>
+						</div>
+						<div class="col-sm-6">
+							<textarea class="form-control" rows="2" placeholder="If you have additional comments about this category enter here."></textarea>	
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="row">
+						<div class="col-sm-5">							
+							<h4 class="ng-binding"><img src="Content/images/blue-arrow-right.png"> Overall Fairness</h4>
+    						<div class="star"><input id="input-21d" value="3" type="number" class="str" min=0 max=5 step=0.5 data-size="xs"></div>
+						</div>
+						<div class="col-sm-6">
+							<textarea class="form-control" rows="2" placeholder="If you have additional comments about this category enter here."></textarea>	
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="row">
+						<div class="col-sm-5">							
+							<h4 class="ng-binding"><img src="Content/images/blue-arrow-right.png"> Amount of Hardwork</h4>
+    						<div class="star"><input id="input-21d" value="4" type="number" class="str" min=0 max=5 step=0.5 data-size="xs"></div>
+						</div>
+						<div class="col-sm-6">
+							<textarea class="form-control" rows="2" placeholder="If you have additional comments about this category enter here."></textarea>	
+						</div>
+					</div>
+				</li>
+			</ul>
+
+
+			 <!-- <ul class="list-unstyled">
+				<li ng-repeat="category in categorynames">
+					<div class="row">
+						<div class="col-sm-5">							
+							<h4><img src="Content/images/blue-arrow-right.png"> {{category.name}}</h4>
+    						<div class="star"><input id="input-21d" value="2" type="number" class="str" min=0 max=5 step=1 data-size="xs"></div>
+						</div>
+						<div class="col-sm-6">
+							<textarea class="form-control" rows="2" placeholder="If you have additional comments about this category enter here."></textarea>	
+						</div>
+					</div>
+				</li>
+			</ul> 
+ -->
+
+		</section>
+
+		<section>
+			<textarea class="form-control" rows="5" placeholder="Please provide your overall coments here."></textarea>	<br>
+			<button type="button" class="btn btn-sm btn-primary">Submit</button>
+		</section>
+
+		<section class="socialnetwork" style="display:none;">
+			<ul>
+				<li style="margin:5px;"><a href="https://twitter.com/" target="new" title="twitter"><i class="fa fa-twitter on fa-square-o fa-lg"></i></a></li><br>
+				<li style="margin:5px;"><a href="https://plus.google.com/" target="new" title="google plus"><i class="fa fa-google-plus on fa-square-o fa-lg"></i></a></li><br>
+				<li style="margin:5px;"><a href="https://www.linkedin.com/company/" target="new" title="linkedin"><i class="fa fa-linkedin on fa-square-o fa-lg"></i></a></li><br>
+				<li style="margin:5px;"><a href="https://www.facebook.com/pages/" target="new" title="facebook"><i class="fa fa-facebook on fa-square-o fa-lg"></i></a></li>
+			</ul>
+		</section>
+
+	</div>
+	<div class="col-md-2 col-md-6" style="padding:10px;">
+	</div>
+
+	<script>
+	    $(document).ready(function () {
+	        $(".str").rating({
+	            starCaptions: function(val) {
+	                if (val < 5) {
+	                    return val+' Stars';
+	                } else {
+	                    return 'high';
+	                }
+	            },
+	            starCaptionClasses: function(val) {
+	                if (val < 3) {
+	                    return 'label label-danger';
+	                } else {
+	                    return 'label label-success';
+	                }
+	            },
+	            hoverOnClear: false
+	        });
+	    });
+    </script>
+	<!-- /*<script src="Scripts/star-rating.min.js"></script>    -->
+</div>
+
+

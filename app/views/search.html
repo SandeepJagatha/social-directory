@@ -1,0 +1,211 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
+<div class="container searchdiv" ng-controller="SearchController">
+
+
+  <div class="col-md-2 col-md-6" style="padding-left: 0px;">
+	<section class="wow fadeInLeft animated searchsec" style="box-shadow: 0 2px 3px 2px rgba(0,0,0,0.3);padding: 20px 15px;margin-top: 11px;">
+	  	
+	  	<!-- <select class="form-control" >
+		  <option value="{{state.abbreviation}}"  ng-repeat="state in states | orderBy:'abbreviation'">{{state.name}}</option>
+		</select> -->
+
+		<!-- <select class="form-control"  ng-model="cityselect">
+		  <option value="{{city.value}}"  ng-repeat="city in cities | orderBy:'value'">{{city.label}}</option>
+		</select> 
+		<select class="form-control">
+		  <option value="{{area.name}}"  ng-repeat="area in areas | orderBy:'name'">{{area.name}}</option>
+		</select>		
+		<select class="form-control">
+			<option value="{{subject.name}}" ng-model="nameText" ng-repeat="subject in subjects | orderBy:'name'">{{subject.name}}</option>
+		</select>
+		 -->
+		 <button class="btn btn-xs btn-danger" ng-click="clearall()">clear all</button><br><br>
+		
+		<select class="form-control" ng-model="cityselect" ng-options="city.value as city.label for city in cities | orderBy:'label'"></select><br>
+		<select class="form-control" data-ng-model="areaselect"  data-ng-options="area.value as area.name for area in areas | orderBy:'name'"></select><br>
+		<br>
+		<label>Narrow by subject:</label>
+	  	<select class="form-control" data-ng-model="subjectselect"  data-ng-options="subject.value as subject.name for subject in subjects | orderBy:'name'"></select>
+		<br>
+
+		<label>Narrow by Grade:</label>
+	  	<select class="form-control" data-ng-model="gselect"  data-ng-options="g.value as g.name for g in grades | orderBy:'name'"></select>
+	  	<br>
+
+		<label>Narrow by Sort-type:</label>
+		<select class="form-control" ng-model="orderProp" data-ng-options="s.value as s.name for s in sorttypes | orderBy:'name'"></select>
+	  	<br><br>
+
+
+	<!-- <h4 class="fresult">Filter Result <small><a class="adecfree" href="#">clear</a></small></h4> 
+
+		<label>Sub Rating : </label>
+		<div class="btn-group" data-toggle="buttons">
+		  <label class="btn btn-xs btn-primary active">
+		    <input type="radio" name="options" id="option2" autocomplete="off"> On
+		  </label>
+		  <label class="btn btn-xs btn-primary">
+		    <input type="radio" name="options" id="option3" autocomplete="off"> Off
+		  </label>
+		</div>
+
+		<br><br>
+		<label>Overall : </label>
+    	<div star-rating rating-value="rating" max="5" on-rating-selected="saveRatingToServer(newRating)" ></div>
+		<label>Fairness : </label>
+    	<div star-rating rating-value="3" max="5" on-rating-selected="getSelectedRating(user)"></div>
+		<label>Friendly : </label>
+    	<div star-rating rating-value="3" max="5" on-rating-selected="getSelectedRating(user)"></div>
+		<label>HomeWork : </label>
+    	<div star-rating rating-value="5" max="5" on-rating-selected="getSelectedRating(user)"></div> 
+    -->
+
+
+	</section>
+  </div>
+
+
+  <div class="col-md-7 col-md-12">
+	<section class="wow fadeInDown animated searchsec" >
+
+		<div class="input-group input-group-lg">
+	      <input type="text" class="form-control" ng-model="query"  placeholder="Search for {{cattype.type}} here...">
+	      <span class="input-group-btn">
+	        <button class="btn btn-default btn-primary" type="button">Go!</button>
+	      </span>
+	    </div>
+
+	    <hr>
+
+		<h2 class="brand-before wow fadeInDown animated">
+			<small> Results of  {{cattype.type}} </small>
+		</h2>
+		<div class="content">
+			<div class="wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; -webkit-animation-duration: 1000ms; -webkit-animation-delay: 600ms;" ng-repeat="user in users | filter:{city: cityselect, area:areaselect, grade:gselect, teach:subjectselect} | filter:query | orderBy:orderProp">
+				<div class="media">
+					<div class="pull-left">
+						<a href="#/userprofile/{{user.id}}"><img class="media-object" ng-src="{{user.url}}" alt=""></a>
+					</div>
+					<div class="media-body">
+						<div class="row">
+							<div class="col-md-8">
+								<h4> <a href="#/userprofile/{{user.id}}">{{user.firstName}} {{user.lastName}} </a>,  {{user.address}}, {{user.city}}</h4>
+								<h5> {{user.grade}} {{user.teach}}, {{user.area}}</h5>
+							</div>
+							<div class="col-md-4">
+						        	<div star-rating rating-value="user.currentrating" max="5" readonly="true" ></div>
+	<!-- 
+								<div class="star"><input id="input-21d" value="{{user.rating}}" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs"></div> -->
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-3">
+								<a class="btn btn-primary btn-xs" style="margin: 30px 14px;" href="#/usercomments/{{user.id}}">View Comments</a>
+							</div>
+							<div class="col-md-3">
+								<!-- <a style="margin: 30px 14px;" class="btn btn-primary btn-xs" href="#/userprofile/{{user.id}}">View Profile</a> -->
+							</div>
+							<div class="col-md-6">
+								<ul class="list-unstyled">
+									<li>Overall : {{user.overall}}</li>
+									<li>Friendliness : {{user.friendliness}}</li>
+									<li>Fairness : {{user.fairness}}</li>
+									<li>HomeWork : {{user.homework}}</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div><!--/.media -->
+				<hr>
+			</div>
+		</div>
+
+	 </section>
+
+
+
+<script src="Scripts/star-rating.min.js"></script>    
+<script src="Scripts/angular-slider.js"></script>  
+
+
+<!-- <script src="Scripts/ng-map.min.js"></script> -->
+<!-- <script src="Scripts/angular-google-maps.min.js"></script> -->
+
+<!-- <script src="//maps.google.com/maps/api/js"></script> -->
+
+		
+	<section class="socialnetwork" style="display:none;">
+		<ul>
+			<li style="margin:5px;"><a href="https://twitter.com/" target="new" title="twitter"><i class="fa fa-twitter on fa-square-o fa-lg"></i></a></li><br>
+			<li style="margin:5px;"><a href="https://plus.google.com/" target="new" title="google plus"><i class="fa fa-google-plus on fa-square-o fa-lg"></i></a></li><br>
+			<li style="margin:5px;"><a href="https://www.linkedin.com/company/" target="new" title="linkedin"><i class="fa fa-linkedin on fa-square-o fa-lg"></i></a></li><br>
+			<li style="margin:5px;"><a href="https://www.facebook.com/pages/" target="new" title="facebook"><i class="fa fa-facebook on fa-square-o fa-lg"></i></a></li>
+		</ul>
+	</section>
+	
+  </div>
+  <div class="col-md-3 col-md-6" style="padding:10px;">
+  		<div class="form-horizontal">
+
+  			<div class="form-group">
+				<div id="map" style="box-shadow:0 3px 25px black;"></div>
+			</div>
+			<!-- <input ng-model="mapquery" class="form-control" placeholder="Search..."> -->
+			
+
+			<div class="form-group">
+			    <label class="col-sm-3" style="padding: 8px 0px 0px 0px; "> Limit By : </label>
+			    <div class="col-sm-3">
+			      <input ng-model="mapquantity" class="form-control" placeholder="Limit by..">
+			    </div>
+			</div>
+		    <div class="form-group">
+		    	<label>Schools at {{cityselect}} : </label>
+			     <div class="mapcontent">
+			    	<div id="class" ng-repeat="marker in markers | filter:{schoolname:query,address:cityselect} | orderBy : 'schoolname' | limitTo:mapquantity">
+			         	<a href="#" ng-click="openInfoWindow($event, marker)">{{marker.schoolname}}</a><input type="hidden" value="{{marker.address}}" />
+			    	</div>
+			    </div>
+		    </div>
+		    	
+            
+	        <!--    
+	            <div class="text-right">
+			        <div class="input-append text-right">
+			            <input type="text" ng-model="search"/>
+			            <button class="btn" type="button" ng-click="geoCode()" ng-disabled="search.length == 0" title="search" >&nbsp;<i class="fa fa-search"></i></button>
+			            <button class="btn" type="button" ng-click="gotoCurrentLocation()" title="current location">&nbsp;<i class="icon-home"></i></button>
+			        </div>
+			    </div>
+			    <div id="class" ng-repeat="marker in markers | filter:mapquery | orderBy : 'schoolname' | limitTo:mapquantity">
+			</div> -->
+		</div>
+  </div>
+
+
+  <script>
+	    $(document).ready(function () {
+	        $(".str").rating({
+	            starCaptions: function(val) {
+	                if (val < 5) {
+	                    return val+' Stars';
+	                } else {
+	                    return 'high';
+	                }
+	            },
+	            starCaptionClasses: function(val) {
+	                if (val < 3) {
+	                    return 'label label-danger';
+	                } else {
+	                    return 'label label-success';
+	                }
+	            },
+	            hoverOnClear: false
+	        });
+	    });
+    </script>
+
+</div>
+	

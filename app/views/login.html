@@ -1,0 +1,129 @@
+<!-- <style type="text/css">
+  body {
+    background: #eee !important;  
+  }
+
+  .wrapper {  
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+
+  .form-signin {
+    max-width: 380px;
+    padding: 15px 35px 45px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,0.1);  
+
+    .form-signin-heading,
+    .checkbox {
+      margin-bottom: 30px;
+    }
+
+    .checkbox {
+      font-weight: normal;
+    }
+
+    .form-control {
+      position: relative;
+      font-size: 16px;
+      height: auto;
+      padding: 10px;
+      @include box-sizing(border-box);
+
+      &:focus {
+        z-index: 2;
+      }
+    }
+
+    input[type="text"] {
+      margin-bottom: -1px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    input[type="password"] {
+      margin-bottom: 20px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+
+</style>
+
+
+<div ng-show="error" class="alert alert-danger">{{error}}</div>
+
+
+  <div class="wrapper">
+    <form class="form-signin" ng-submit="login()" name="form">       
+      <h2 class="form-signin-heading">Please login</h2>
+      <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" ng-model="username" />
+       
+       <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+
+      <input type="password" class="form-control" name="password" placeholder="Password" required="" ng-model="password"/>  
+
+
+        <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span> 
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
+    </form>
+  </div> -->
+
+<div class="container" style=" padding-top: 20px;">
+  <h2 class="text-center">Kleos! Administration Login</h2><hr><br>
+<!-- <div class="alert alert-info">
+    Username: kleos<br />
+    Password: samrake123
+</div> -->
+<div class="text-center">
+  <div ng-show="error" class="alert alert-danger" >{{error}}</div>
+</div><br>
+
+<form name="form" class="form-horizontal" ng-submit="login()">
+  <div class="form-group">
+    <label class="col-sm-4 control-label">Username</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control"  ng-model="username" required placeholder="Username">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-4 control-label">Password</label>
+    <div class="col-sm-4">
+      <input type="password" class="form-control" ng-model="password" required  placeholder="Password">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-4 col-sm-10">
+      <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-danger">Sign in</button>
+    </div>
+  </div>
+</form>
+
+
+
+
+
+<!-- <form name="form" ng-submit="login()"  class="form-horizontal">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <div class="col-sm-10">
+          <input type="text" name="username" id="username" class="form-control" ng-model="username" required />
+          <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+        </div>  
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <div class="col-sm-10">
+          <input type="password" name="password" id="password" class="form-control" ng-model="password" required />
+          <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+        </div>
+    </div>
+    <div class="form-actions">
+        <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-danger">Login</button>
+        <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    </div>
+</form> -->
+
+</div>
+

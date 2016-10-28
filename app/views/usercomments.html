@@ -1,0 +1,101 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
+<div class="container searchdiv" >
+
+
+  <div class="col-md-2 col-md-6" style="padding-left: 0px;">
+    <section class="wow fadeInLeft animated searchsec">
+    </section>
+</div>
+
+
+<div class="col-md-8 col-md-12"><br>
+    <ol class="breadcrumb">
+      <li><a href="#/index">Home</a></li>
+      <li><a href="#/search">Search</a></li>
+      <li class="active">Comments</li>
+  </ol>
+  <section class="wow fadeInDown animated"  style="box-shadow: 0 2px 3px 2px rgba(0,0,0,0.3);padding: 20px 15px;margin-top: 11px;" >
+
+    <div class="wow fadeInTop animated" data-wow-duration="1000ms" data-wow-delay="600ms" style="visibility: visible; -webkit-animation-duration: 1000ms; -webkit-animation-delay: 600ms;" >
+        <div class="media">
+            <div class="pull-left">
+                <a href="#"><img class="media-object" ng-src='{{user.url}}' alt=""></a>
+            </div>
+            <div class="media-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4> {{user.firstName}} {{user.lastName}},  {{user.address}}, {{user.city}}</h4>
+                        <h5> {{user.teach}}</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <div star-rating rating-value="user.currentrating" max="user.maxrating" readonly="true" ></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-3">
+                        <a style="margin: 30px 14px;" class="btn btn-primary btn-xs" href="#/userprofile/{{user.id}}">View Profile</a>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li>Overall : {{user.overall}}</li>
+                            <li>Friendliness : {{user.friendliness}}</li>
+                            <li>Fairness : {{user.fairness}}</li>
+                            <li>HomeWork : {{user.homework}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div><!--/.media -->
+        <hr></div>
+
+            {{user.comments.comment}}
+
+        <div data-ng-include="'/app/views/commentsbox.html'" />
+</section>
+
+<script src="Scripts/star-rating.min.js"></script>    
+<script src="Scripts/angular-slider.js"></script>  
+
+
+<section class="socialnetwork" style="display:none;">
+    <ul>
+        <li style="margin:5px;"><a href="https://twitter.com/" target="new" title="twitter"><i class="fa fa-twitter on fa-square-o fa-lg"></i></a></li><br>
+        <li style="margin:5px;"><a href="https://plus.google.com/" target="new" title="google plus"><i class="fa fa-google-plus on fa-square-o fa-lg"></i></a></li><br>
+        <li style="margin:5px;"><a href="https://www.linkedin.com/company/" target="new" title="linkedin"><i class="fa fa-linkedin on fa-square-o fa-lg"></i></a></li><br>
+        <li style="margin:5px;"><a href="https://www.facebook.com/pages/" target="new" title="facebook"><i class="fa fa-facebook on fa-square-o fa-lg"></i></a></li>
+    </ul>
+</section>
+
+</div>
+<div class="col-md-2 col-md-6" style="padding:10px;">
+    <img src="images/add2.jpg" class="img-responsive" alt="Responsive image">
+</div>
+
+
+<script>
+$(document).ready(function () {
+    $(".str").rating({
+        starCaptions: function(val) {
+            if (val < 5) {
+                return val+' Stars';
+            } else {
+                return 'high';
+            }
+        },
+        starCaptionClasses: function(val) {
+            if (val < 3) {
+                return 'label label-danger';
+            } else {
+                return 'label label-success';
+            }
+        },
+        hoverOnClear: false
+    });
+});
+</script>
+
+</div>
